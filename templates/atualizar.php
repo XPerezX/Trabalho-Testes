@@ -1,6 +1,7 @@
 <?php
 	include 'db.php';
 	include 'colecionador_mock.php';
+	include 'functions.php';
 	$sql = "SELECT * FROM grupo WHERE id=$_GET[id]";
 	
   	$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -61,13 +62,8 @@
 						
 						$id = $_GET['id'];
 						
-						var_dump($_POST);
-						$sql = mysqli_prepare($conexao, "UPDATE grupo SET nome = ?, descricao = ?, colecionador_administrador = ? WHERE id=".$id);
-						mysqli_stmt_bind_param($sql, 'sss', $nome, $descricao, $administrador);
-				
-						mysqli_stmt_execute($sql);
-				
-						header("Location: http://localhost/testes-grupos/templates/lista.php");
+						
+						ValidateAtua($id, $nome,$descricao,$administrador);
 					}
 				?>
 				

@@ -1,7 +1,21 @@
 <?php
 	include 'db.php';
+	
+	
+	
+	
+	if (empty($_POST['search'])){
 	$sql = "SELECT * FROM grupo ORDER BY id";
 	$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+	}else{
+		
+		$procurar = $_POST['search'];
+		
+		$sql = "SELECT * FROM grupo WHERE nome like '%".$procurar."%' ";
+	$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+
+	}
 ?>
 
 <!doctype html>
@@ -22,6 +36,21 @@
 	<div class="card text-center">
       <div class="card-body">
         <h1 class="card-title">Grupos</h1>
+
+		<form class="bd-search d-flex align-items-center "  role="search" id="nav-search-form" method="post" action="">
+                <div class="">
+                    <div class="">
+                            <button type="submit" class="btn btn-search pr-1">
+                                <i class="fa fa-search search-icon"></i>
+                            </button>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Pesquisar Nome do Grupo" name ="search">
+                    <span class="algolia-autocomplete">
+                        <button type="submit" class="btn btn-search pr-1"></button>
+                    </span>
+                </div>
+            </form>
+
 		<div class="table-responsive-sm">
   			<table class="table table-bordered">
 			<tr>
@@ -45,7 +74,7 @@
 					<td><center><?php echo $dados['colecionador_administrador']; ?></center></td>
 					<td><center><?php echo $dados['data_de_criacao']; ?></center></td>
 					<td><center><a href="atualizar.php?id=<?php echo $dados['id'] ?>"><i class="fas fa-edit"></i> </a></center></td>
-					<td><center><a class="text-danger" href="del.php?id=<?php echo $dados['id'] ?>"><i class="fas fa-trash-alt"></i></a></center></td>	
+					<td><center><a class="text-danger"  href="del.php?id=<?php echo $dados['id'] ?>"><i class="fas fa-trash-alt"></i></a></center></td>	
 				</tr>
 				
 			<?php } ?>

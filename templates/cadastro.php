@@ -9,18 +9,18 @@
 		$nome = $_POST['nome'];
 		$descricao = $_POST['descricao'];
 		$administrador = $_POST['administrador'];
-		$data_de_criacao = date("Y-m-d"); 
+		
 
-		Validate($nome, $descricao);
-	//	$sql = mysqli_prepare($conexao, "INSERT INTO grupo(nome, descricao, data_de_criacao, colecionador_administrador) VALUES (?, ?, ?, ?)");
-	//	mysqli_stmt_bind_param($sql, 'ssss', $nome, $descricao, $data_de_criacao, $administrador);
+		Validate($nome, $descricao, $administrador );
+		//$sql = mysqli_prepare($conexao, "INSERT INTO grupo(nome, descricao, data_de_criacao, colecionador_administrador) VALUES (?, ?, ?, ?)");
+		//mysqli_stmt_bind_param($sql, 'ssss', $nome, $descricao, $data_de_criacao, $administrador);
 
-	//	mysqli_stmt_execute($sql);
+		//mysqli_stmt_execute($sql);
 
 		//header("Location: http://localhost/testes-grupos/templates/lista.php");
 		
 		//header("Location: http://localhost/crud/templates/lista.php");
-		echo '<h1>CADASTRADO COM SUCESSO!</h1>';
+		
 	}
 ?>
 <!doctype html>
