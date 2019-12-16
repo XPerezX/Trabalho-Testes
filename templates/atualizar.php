@@ -3,8 +3,34 @@
 	include 'colecionador_mock.php';
 	include 'functions.php';
 	$sql = "SELECT * FROM grupo WHERE id=$_GET[id]";
+	$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+	  
+	if(!empty($_POST['nome'])) {
+		$nome 	= $_POST['nome'];
+		$descricao 	= $_POST['descricao'];
+		$administrador = $_POST['colecionador_administrador'];
+		
+		$id = $_GET['id'];
+		
+		
+		//if(ValidateAtua($id, $nome,$descricao,$administrador)){
+		if(preg_match("/^[0-9a-zA-Z]+$/", $nome) && preg_match("/^[0-9a-zA-Z]+$/", $descricao)){
+			$sql = mysqli_prepare($conexao, "UPDATE grupo SET nome = ?, descricao = ?, colecionador_administrador = ? WHERE id=".$id);
+			mysqli_stmt_bind_param($sql, 'sss', $nome, $descricao, $administrador);
 	
-  	$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+			mysqli_stmt_execute($sql);
+	
+			header("Location: http://localhost/Trabalho-Testes/templates/lista.php");
+	
+		}else{
+			echo '<div class="alert alert-danger" role="alert">
+			Insira dados válidos!
+			</div>';
+		}
+		
+	}
+
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,18 +80,7 @@
 				
 					</div>
 
-				<?php
-					if(!empty($_POST['nome'])) {
-						$nome 	= $_POST['nome'];
-						$descricao 	= $_POST['descricao'];
-						$administrador = $_POST['colecionador_administrador'];
-						
-						$id = $_GET['id'];
-						
-						
-						ValidateAtua($id, $nome,$descricao,$administrador);
-					}
-				?>
+
 				
 				<button type="submit" class="btn btn-primary" value="Atualizar" style="margin-bottom:5px">Atualizar</button>
 				<?php } ?>

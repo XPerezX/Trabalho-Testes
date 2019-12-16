@@ -8,18 +8,21 @@
 	
 		$nome = $_POST['nome'];
 		$descricao = $_POST['descricao'];
+		$data_de_criacao = date("Y-m-d"); 
 		$administrador = $_POST['administrador'];
-		
+	
+		if(preg_match("/^[0-9a-zA-Z]+$/", $nome) && preg_match("/^[0-9a-zA-Z]+$/", $descricao)){
+		$sql = mysqli_prepare($conexao, "INSERT INTO grupo(nome, descricao, data_de_criacao, colecionador_administrador) VALUES (?, ?, ?, ?)");
+		mysqli_stmt_bind_param($sql, 'ssss', $nome, $descricao, $data_de_criacao, $administrador);
 
-		Validate($nome, $descricao, $administrador );
-		//$sql = mysqli_prepare($conexao, "INSERT INTO grupo(nome, descricao, data_de_criacao, colecionador_administrador) VALUES (?, ?, ?, ?)");
-		//mysqli_stmt_bind_param($sql, 'ssss', $nome, $descricao, $data_de_criacao, $administrador);
+		mysqli_stmt_execute($sql);
 
-		//mysqli_stmt_execute($sql);
-
-		//header("Location: http://localhost/testes-grupos/templates/lista.php");
-		
-		//header("Location: http://localhost/crud/templates/lista.php");
+		header("Location: http://localhost/Trabalho-testes/templates/lista.php");
+		}else{
+			echo '<div class="alert alert-danger" role="alert">
+			Insira dados válidos!
+			</div>';
+		}
 		
 	}
 ?>

@@ -37,9 +37,9 @@
       <div class="card-body">
         <h1 class="card-title">Grupos</h1>
 
-		<form class="bd-search d-flex align-items-center "  role="search" id="nav-search-form" method="post" action="">
+	
+		<form class="bd-search d-flex align-items-center" style ="width:30%;"  role="search" id="nav-search-form" method="post" action="">
                 <div class="">
-                    <div class="">
                             <button type="submit" class="btn btn-search pr-1">
                                 <i class="fa fa-search search-icon"></i>
                             </button>
@@ -50,6 +50,7 @@
                     </span>
                 </div>
             </form>
+		
 
 		<div class="table-responsive-sm">
   			<table class="table table-bordered">
