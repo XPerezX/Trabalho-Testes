@@ -11,19 +11,7 @@
 		$data_de_criacao = date("Y-m-d"); 
 		$administrador = $_POST['administrador'];
 	
-		if(preg_match("/^[0-9a-zA-Z]+$/", $nome) && preg_match("/^[0-9a-zA-Z]+$/", $descricao)){
-		$sql = mysqli_prepare($conexao, "INSERT INTO grupo(nome, descricao, data_de_criacao, colecionador_administrador) VALUES (?, ?, ?, ?)");
-		mysqli_stmt_bind_param($sql, 'ssss', $nome, $descricao, $data_de_criacao, $administrador);
-
-		mysqli_stmt_execute($sql);
-
-		header("Location: http://localhost/Trabalho-testes/templates/lista.php");
-		}else{
-			echo '<div class="alert alert-danger" role="alert">
-			Insira dados válidos!
-			</div>';
-		}
-		
+		Validate($nome,$descricao,$administrador);
 	}
 ?>
 <!doctype html>
@@ -59,11 +47,16 @@
     <label for="administrador">Selecione o Administrador:</label>
 		<select style = "max-width:50%"class="form-control" name="administrador">
 		<?php
-			for($i = 0; $i < count($colecionadores); $i++){
+				include 'db.php';
+				$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration";
+				$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+				
+				while($dados = mysqli_fetch_assoc($con)) { 
+					$c = $dados ["FULLNAME"];
+					echo "<option value=$c>	$c</option>";
+				}
 
-				$c = strval($colecionadores[$i]);
-				echo "<option value=$c>	$colecionadores[$i]</option>";
-				}		
+
 		?>
 		</select>
 			</div>

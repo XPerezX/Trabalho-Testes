@@ -4,49 +4,49 @@
 
 function  Test1NumeroNome(){
 
-$val = Validate(1111, '1111', 'david');
+$val = Validate(1111, '1111', 'Rayssa Ayla da Paz');
 
     if ($val == true){
-    echo "Teste Ok";
+    echo "Teste Ok <br>:";
     }else{
 
-        echo "Teste error";
+        echo "Teste error <br>";
     }
 }
 
 function  Test2CampoVazio(){
 
-    $val = Validate('', '', 'david');
+    $val = Validate('', '', 'Rayssa Ayla da Paz');
     
         if ($val == true){
-        echo "Teste Ok";
+        echo "Teste Ok <br>";
         }else{
     
-            echo "Teste error";
+            echo "Teste error <br>";
         }
     }
 
     function  Test3DescricaoNum(){
 
-        $val = Validate('Teste', 321, 'david');
+        $val = Validate('Teste', 321, 'Rayssa Ayla da Paz');
         
             if ($val == true){
-            echo "Teste Ok";
+            echo "Teste Ok <br>";
             }else{
         
-                echo "Teste error";
+                echo "Teste error <br>";
             }
         }
 
     function  Test4DescriCaracter(){
 
-        $val = Validate('Teste', '@#@', 'david');
+        $val = Validate('Teste', '@#@', 'Rayssa Ayla da Paz');
         
             if ($val == true){
-            echo "Teste Ok";
+            echo "Teste Ok <br>";
             }else{
         
-                echo "Teste error";
+                echo "Teste error <br>";
             }
         }
 
@@ -54,15 +54,28 @@ function  Test2CampoVazio(){
     
 function  Test5EspecialNome(){
 
-    $val = Validate('@#$$', '1111', 'david');
+    $val = Validate('@#$$', '1111', 'Rayssa Ayla da Paz');
     
         if ($val == true){
-        echo "Teste Ok";
+        echo "Teste Ok <br>";
         }else{
     
-            echo "Teste error";
+            echo "Teste error <br>";
         }
     }
+
+function  Test6EspecialNome(){
+
+    $val = Validate('dawdwa', 'dawdaw', 'da Ayla da Paz');
+    
+        if ($val == true){
+        echo "Teste Ok <br>";
+        }else{
+    
+            echo "Teste error <br>";
+        }
+    }
+
     
 
 Test1NumeroNome();
@@ -70,7 +83,7 @@ Test2CampoVazio();
 Test3DescricaoNum();
 Test4DescriCaracter();
 Test5EspecialNome();
-
+Test6EspecialNome();
 
 /*
  ---------Resultados Dos Testes -------
@@ -91,6 +104,11 @@ Test5EspecialNome();
 
  Teste 5 
  Test5EspecialNome() - Nome de Grupos não pode conter numeros ou caracteres especiais Teste error
+
+ 
+ Teste 6 
+ Test6EspecialNome() - Não foi possível achar na base de dados o colecionador! Teste error
+
 
 */
 

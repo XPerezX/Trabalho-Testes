@@ -13,20 +13,7 @@
 		$id = $_GET['id'];
 		
 		
-		//if(ValidateAtua($id, $nome,$descricao,$administrador)){
-		if(preg_match("/^[0-9a-zA-Z]+$/", $nome) && preg_match("/^[0-9a-zA-Z]+$/", $descricao)){
-			$sql = mysqli_prepare($conexao, "UPDATE grupo SET nome = ?, descricao = ?, colecionador_administrador = ? WHERE id=".$id);
-			mysqli_stmt_bind_param($sql, 'sss', $nome, $descricao, $administrador);
-	
-			mysqli_stmt_execute($sql);
-	
-			header("Location: http://localhost/Trabalho-Testes/templates/lista.php");
-	
-		}else{
-			echo '<div class="alert alert-danger" role="alert">
-			Insira dados válidos!
-			</div>';
-		}
+		ValidateAtua($id, $nome, $descricao, $administrador);
 		
 	}
 
@@ -70,12 +57,15 @@
 						<label for="administrador">Selecione o Administrador:</label>
 							<select  style = "max-width:50%" class="form-control"  name="colecionador_administrador">
 							<?php
-								for($i = 0; $i < count($colecionadores); $i++){
-
-									$c = strval($colecionadores[$i]);
-									echo "<option value=$c>$colecionadores[$i]</option>";
-									}
-							?>
+				include 'db.php';
+				$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration";
+				$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+				
+				while($dados = mysqli_fetch_assoc($con)) { 
+					$c = $dados ["FULLNAME"];
+					echo "<option value=$c>	$c</option>";
+				}
+		?>
 							</select>
 				
 					</div>
