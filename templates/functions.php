@@ -2,8 +2,8 @@
 
 
 function Validate(string $nome, string $descricao, $administrador){
-    $caracteresEspeciaiseNumeros = ['[',']','&','#','%','/','$','!','@','*','?','0','1','2','3','4','5','6','7','8','9'];
-    $caracteresEspeciais = ['[',']','&','#','%','/','$','!','@','*','?'];
+    $caracteresEspeciaiseNumeros = ['[',']','&','#','%','/','$','!','@','*','\/','?','0','1','2','3','4','5','6','7','8','9','|'];
+    $caracteresEspeciais = ['[',']','&','#','%','/','$','!','@','*','?','+','-','_','|','\/'];
     $nomeArray = str_split($nome);
     $descricaoArray = str_split($descricao);
     $findInArray1 = false;
@@ -50,14 +50,6 @@ function Validate(string $nome, string $descricao, $administrador){
         }
         
         if($nomeValido == true and $descricaoValido == true){
-            include 'db.php';
-            $sql = mysqli_prepare($conexao, "INSERT INTO grupo(nome, descricao, data_de_criacao, colecionador_administrador) VALUES (?, ?, ?, ?)");
-            mysqli_stmt_bind_param($sql, 'ssss', $nome, $descricao, $data_de_criacao, $administrador);
-
-            mysqli_stmt_execute($sql);
-
-        //    header("Location: http://localhost/Trabalho-Testes/templates/lista.php");
-            echo '<h1>CADASTRADO COM SUCESSO!</h1>';
 
             return true;
         }
@@ -66,20 +58,21 @@ function Validate(string $nome, string $descricao, $administrador){
         echo '<div class="alert alert-danger" role="alert">
         É obrigatorio preencher os campos!
         </div>';
+        return false;
     }
 }
 
 
 function ValidateAtua(int $id,string $nome, string $descricao, $administrador){
-    $caracteresEspeciaiseNumeros = ['&','#','%','/','$','!','@','*','?','0','1','2','3','4','5','6','7','8','9'];
-    $caracteresEspeciais = ['&','#','%','/','$','!','@','*','?'];
+    $caracteresEspeciaiseNumeros = ['[',']','&','#','%','/','$','!','@','*','?','+','-','_','|','\/','0','1','2','3','4','5','6','7','8','9'];
+    $caracteresEspeciais = ['[',']','&','#','%','/','$','!','@','*','?','+','-','_','|','\/'];
     $nomeArray = str_split($nome);
     $descricaoArray = str_split($descricao);
     $findInArray1 = false;
     $findInArray2 = false;
     $nomeValido = false;
     $descricaoValido = false;
-    $data_de_criacao = date("Y-m-d"); 
+   
     foreach ($nomeArray as $value ){
         
         $car = in_array($value, $caracteresEspeciaiseNumeros);
@@ -116,13 +109,9 @@ function ValidateAtua(int $id,string $nome, string $descricao, $administrador){
     }
 
     if($nomeValido == true and $descricaoValido == true){
-        include 'db.php';
-        $sql = mysqli_prepare($conexao, "UPDATE grupo SET nome = ?, descricao = ?, colecionador_administrador = ? WHERE id=".$id);
-        mysqli_stmt_bind_param($sql, 'sss', $nome, $descricao, $administrador);
-
-        mysqli_stmt_execute($sql);
-
-        header("Location: http://localhost/Trabalho-Testes/templates/lista.php");
+        return true;
+    }else{
+        return false;
     }
 
 }
