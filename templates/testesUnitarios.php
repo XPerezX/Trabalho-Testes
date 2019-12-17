@@ -2,7 +2,7 @@
     include 'functions.php';
     
     function  Test1NumeroNome() {
-        $val = Validate(1111, '1111', 'Rayssa Ayla da Paz');
+        $val = Validate(1111, '1111', 'Ravix');
         if ($val == true) {
             echo "Teste Ok <br>:";
         } else {
@@ -11,7 +11,7 @@
     }
 
     function  Test2CampoVazio() {
-        $val = Validate('', '', 'Rayssa Ayla da Paz');
+        $val = Validate('', '', 'Ravix');
         if ($val == true) {
             echo "Teste Ok <br>";
         } else {
@@ -20,7 +20,7 @@
     }
 
     function  Test3DescricaoNum() {
-        $val = Validate('Teste', 321, 'Rayssa Ayla da Paz');
+        $val = Validate('Teste', 321, 'Ravix');
         if ($val == true) {
             echo "Teste Ok <br>";
         } else {
@@ -29,7 +29,7 @@
     }
 
     function  Test4DescriCaracter() {
-        $val = Validate('Teste', '@#@', 'Rayssa Ayla da Paz');
+        $val = Validate('Teste', '@#@', 'Ravix');
         if ($val == true) {
             echo "Teste Ok <br>";
         } else {
@@ -38,7 +38,7 @@
     }
    
     function  Test5EspecialNome() {
-        $val = Validate('@#$$', '1111', 'Rayssa Ayla da Paz');
+        $val = Validate('@#$$', '1111', 'Ravix');
         if ($val == true) {
             echo "Teste Ok <br>";
         } else {
@@ -47,7 +47,7 @@
     }
 
     function  Test6EspecialNome() {
-        $val = Validate('dawdwa', 'dawdaw', 'da Ayla da Paz');
+        $val = Validate('dawdwa', 'dawdaw', 'David');
         if ($val == true) {
             echo "Teste Ok <br>";
         } else {        

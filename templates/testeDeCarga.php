@@ -36,9 +36,9 @@
 
     Sistema consegue armazenar em torno de 1000 dados entorno de 15 segundos
 
-    Sistema não conseguiu armazenar 10000 dadods, apenas inseriu ate 2012 dentro de 31 segundos.
+    Sistema não conseguiu armazenar 10000 dadods, apenas inseriu ate 2073 dentro de 31 segundos.
 
-    Sistema não conseguiu novamente ao tentar armazenar 10000 dados simultaneos, apenas inseriu 2197 em 35 segundos
+    Sistema não conseguiu novamente ao tentar armazenar 10000 dados simultaneos, apenas inseriu 2566 em 35 segundos
 
     Conclui se que a capacidade é de aproximadamente 2000 dados.
 

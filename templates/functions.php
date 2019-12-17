@@ -19,7 +19,7 @@
                     $sql = mysqli_prepare($conexao, "INSERT INTO grupo(nome, descricao, data_de_criacao, colecionador_administrador) VALUES (?, ?, ?, ?)");
                     mysqli_stmt_bind_param($sql, 'ssss', $nome, $descricao, $data_de_criacao, $dados ["FULLNAME"]);
                     mysqli_stmt_execute($sql);
-                    header("Location: http://localhost/Trabalho-testes/templates/lista.php");
+                  //  header("Location: http://localhost/Trabalho-testes/templates/lista.php");
                      return true;
                 } else {
                     echo '<div class="alert alert-danger" role="alert">
