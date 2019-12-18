@@ -1,20 +1,19 @@
 <?php
-   //Includes
+   // Includes
 	include 'db.php';
 	include 'colecionador_mock.php';
 	include 'functions.php';
 	// Select pegando o objeto que deseja alterar no banco
 	$sql = "SELECT * FROM grupo WHERE id=$_GET[id]";
 	$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-	  
-	//Condição que escuta a alteração de valores através do submit
+	// Condição que escuta a alteração de valores através do submit
 	if(!empty($_POST['nome'])) {
-		// Declarando variaveis para ser mais facil passar na funcao de validacao
+		// Declarando variáveis para ser mais fácil passar na função de validação
 		$nome 	= $_POST['nome'];                 
 		$descricao 	= $_POST['descricao'];
 		$administrador = $_POST['colecionador_administrador'];
 		$id = $_GET['id'];
-		//Funcao que valida os campos para dar update no banco
+		// Função que valida os campos para dar update no banco de dados
 		ValidateAtua($id, $nome, $descricao, $administrador);
 	}
 ?>
@@ -31,7 +30,7 @@
 		<div class="container" style="margin-top:25px">
 			<div class="card" style="width: 30rem;">
 				<div class="card-body">
-					<h1>Atualizar Grupo</h1>
+					<h1>Atualizar dados</h1>
 						<form method="post" action="">
 							<?php if($dados = mysqli_fetch_array($con)) { ?>
 								<div class="form-group">
@@ -46,11 +45,11 @@
 									<label for="administrador">Selecione o Administrador:</label>
 									<select  style = "max-width:50%" class="form-control"  name="colecionador_administrador">
 									<?php
-										//Parte do codigo que lista os colecionadores do banco de dados 
+										// Parte do código que lista os colecionadores do banco de dados 
 										include 'db.php';
-										$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration";  //puxa os nomes dos colecionadores 
-										$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));				//Executa a consulta no banco
-										while($dados = mysqli_fetch_assoc($con)) {  //pega os resultados em forma de matriz
+										$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration";  // Obter nomes dos colecionadores 
+										$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));	// Executar consulta no banco de dados
+										while($dados = mysqli_fetch_assoc($con)) {  // Obter os resultados em forma de matriz
 											$c = $dados ["FULLNAME"];
 											echo "<option value=$c>	$c</option>";
 										}

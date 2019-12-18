@@ -1,7 +1,7 @@
 <?php
-	// Include conexão com o banco
+	// Include conexão com o banco de dados
 	include 'db.php';
-	//Condição que escuta a alteração de valores através do submit para pesquisar dados, se não houver alteração, então listará todos os dados
+	// Condição que escuta a alteração de valores através do submit para pesquisar dados, se não houver alteração, então listará todos os dados
 	if (empty($_POST['search'])) {
 		$sql = "SELECT * FROM grupo ORDER BY id";
 		$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
@@ -35,7 +35,7 @@
                 	<i class="fa fa-search search-icon"></i>
                 </button>
             </div>
-                <input type="text" class="form-control" placeholder="Pesquisar Nome do Grupo" name ="search">
+                <input type="text" class="form-control" placeholder="Pesquisar Nome do Grupo" name ="search" required="required">
                     <span class="algolia-autocomplete">
                         <button type="submit" class="btn btn-search pr-1"></button>
                     </span>
@@ -48,18 +48,15 @@
 					<center>
 						<td><b>Código</b></td>
 						<td><b>Nome do grupo</b></td>
-						<td><b>Descrição</b></td>
+						<td><b>Descrição do grupo</b></td>
 						<td><b>Administrador</b></td>
 						<td><b>Data de criação</b></td>
-						<td><b>Modificar</b></td>
-						<td><b>Deletar</b></td>
+						<td><b>Editar dados</b></td>
+						<td><b>Deletar cadastro</b></td>
 					</center>
 				</tr>
     	</div>
-		
-		<!--
-		 Laço de repetição que imprimi dados em formato de tabela
-		-->
+		<!-- Laço de repetição que imprime dados em formato de tabela -->
 		<?php while($dados = mysqli_fetch_assoc($con)) { ?>
 			<tr>
 				<center>
@@ -74,7 +71,6 @@
 			</tr>	
 		<?php } ?>
 			</table>
-		
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
