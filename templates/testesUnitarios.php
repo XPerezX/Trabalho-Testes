@@ -1,7 +1,7 @@
 <?php
-//Puxa as funções de validação
+    // Puxa as funções de validação
     include 'functions.php';
-    //Funções para testes unitarios que testam cada campo dos formularios
+    // Funções para testes unitários que testam cada campo dos formulários
     function  Test1NumeroNome() {
         $val = Validate(1111, '1111', 'Ravix');
         if ($val == true) {
@@ -64,11 +64,10 @@
     Test6EspecialNome();
 
     /*
-    ---------Resultados Dos Testes -------
+    --------- Resultados Dos Testes ---------
 
     Teste 1
     TesteNumeroNome() - Nome de Grupos não pode conter numeros ou caracteres especiais  ""Teste error""    (Esperado)
-
 
     Teste 2 
     Test2CampoVazio() - É obrigatorio preencher os campos!  ""Teste error""       (Esperado)
@@ -76,14 +75,12 @@
     Teste 3 
     Test3DescricaoNum() - CADASTRADO COM SUCESSO! ""Teste Ok""   (Esperado)
 
-
     Teste 4 
     Test4DescriCaracter() - Descrição não pode conter caracteres especiais ""Teste error"" (Esperado)
 
     Teste 5 
     Test5EspecialNome() - Nome de Grupos não pode conter numeros ou caracteres especiais Teste error
 
-    
     Teste 6 
     Test6EspecialNome() - Não foi possível achar na base de dados o colecionador! Teste error
 

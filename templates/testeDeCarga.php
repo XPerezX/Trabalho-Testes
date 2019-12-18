@@ -1,5 +1,5 @@
 <?php
-//Fuções para testar a carga inserindo um grande volume de dados no banco através de um laço de repetição
+    // Funções para testar a carga inserindo um grande volume de dados no banco através de um laço de repetição
     function teste100Dados() {
         for ($i = 1; $i <= 100; $i++) {
             include 'db.php';
@@ -30,10 +30,10 @@
     //teste100Dados();
     teste1000Dados();
     //teste10000Dados();
+    
     /*
 
     Sistema consegue armazenar ate 100 dados rapidamente dentre de aproximadamente 3 segundos
-
 
     Sistema consegue armazenar em torno de 1000 dados entorno de 15 segundos
 
