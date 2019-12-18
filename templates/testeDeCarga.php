@@ -1,4 +1,5 @@
 <?php
+//Fuções para testar a carga inserindo um grande volume de dados no banco através de um laço de repetição
     function teste100Dados() {
         for ($i = 1; $i <= 100; $i++) {
             include 'db.php';
@@ -27,7 +28,7 @@
     }
 
     //teste100Dados();
-    //teste1000Dados();
+    teste1000Dados();
     //teste10000Dados();
     /*
 

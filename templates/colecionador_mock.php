@@ -1,5 +1,5 @@
 <?php 
-    $colecionadores = ["David","Carlos","Tarcisio"];
+    $colecionadores = ["Ravix","Luana"];
 
     $descricaoM = ["Tudo na vida depende ", "Pare de tentar e comece a desistir",
     "No começo será dificil, mas no final dará errado"];

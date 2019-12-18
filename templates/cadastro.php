@@ -1,14 +1,16 @@
 <?php
-	// include
+	// includes
 	include 'db.php';
 	include 'colecionador_mock.php';
 	include 'functions.php';
-	//criando grupo no banco de dados.
+	//Condição que escuta a alteração de valores através do submit
 	if (isset($_POST['nome'])){
+		// Declarando variaveis para ser mais facil passar na funcao de validacao
 		$nome = $_POST['nome'];
 		$descricao = $_POST['descricao'];
 		$data_de_criacao = date("d-m-Y"); 
 		$administrador = $_POST['administrador'];
+		//Funcao que valida os campos para ser adicionado no banco
 		Validate($nome, $descricao, $administrador);
 	}
 ?>
@@ -43,10 +45,11 @@
 								<label for="administrador">Selecione o Administrador:</label>
 									<select style = "max-width:50%"class="form-control" name="administrador">
 									<?php
+									//Parte do codigo que lista os colecionadores do banco de dados 
 										include 'db.php';
-										$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration";
-										$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-										while($dados = mysqli_fetch_assoc($con)) { 
+										$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration"; //puxa os nomes dos colecionadores 
+										$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));			//Executa a consulta no banco
+										while($dados = mysqli_fetch_assoc($con)) { 	//pega os resultados em forma de matriz
 											$c = $dados ["FULLNAME"];
 											echo "<option value=$c>	$c</option>";
 										}

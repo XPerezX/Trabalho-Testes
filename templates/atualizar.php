@@ -1,15 +1,20 @@
 <?php
+   //Includes
 	include 'db.php';
 	include 'colecionador_mock.php';
 	include 'functions.php';
+	// Select pegando o objeto que deseja alterar no banco
 	$sql = "SELECT * FROM grupo WHERE id=$_GET[id]";
 	$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 	  
+	//Condição que escuta a alteração de valores através do submit
 	if(!empty($_POST['nome'])) {
-		$nome 	= $_POST['nome'];
+		// Declarando variaveis para ser mais facil passar na funcao de validacao
+		$nome 	= $_POST['nome'];                 
 		$descricao 	= $_POST['descricao'];
 		$administrador = $_POST['colecionador_administrador'];
 		$id = $_GET['id'];
+		//Funcao que valida os campos para dar update no banco
 		ValidateAtua($id, $nome, $descricao, $administrador);
 	}
 ?>
@@ -41,10 +46,11 @@
 									<label for="administrador">Selecione o Administrador:</label>
 									<select  style = "max-width:50%" class="form-control"  name="colecionador_administrador">
 									<?php
+										//Parte do codigo que lista os colecionadores do banco de dados 
 										include 'db.php';
-										$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration";
-										$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-										while($dados = mysqli_fetch_assoc($con)) { 
+										$sql = "SELECT registration ,FULLNAME FROM collectors ORDER BY registration";  //puxa os nomes dos colecionadores 
+										$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));				//Executa a consulta no banco
+										while($dados = mysqli_fetch_assoc($con)) {  //pega os resultados em forma de matriz
 											$c = $dados ["FULLNAME"];
 											echo "<option value=$c>	$c</option>";
 										}

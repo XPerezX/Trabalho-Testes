@@ -1,6 +1,7 @@
 <?php
+//Puxa as funções de validação
     include 'functions.php';
-    
+    //Funções para testes unitarios que testam cada campo dos formularios
     function  Test1NumeroNome() {
         $val = Validate(1111, '1111', 'Ravix');
         if ($val == true) {
